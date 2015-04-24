@@ -30,6 +30,12 @@ case class Const(v: Int) extends Tree
  */
 object Tree {
 
+  /**
+   * This is how we will process/provide variables.
+   * Here it we be:
+   * "x" => 1
+   * "y" =>2
+   */
   type Environment = String => Int
 
 
