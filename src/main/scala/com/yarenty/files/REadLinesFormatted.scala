@@ -3,6 +3,7 @@ package com.yarenty.files
 import scala.io.Source
 
 /**
+ * Some more fun with reading file.
  * Created by yarenty on 29/04/15.
  */
 object ReadLinesFormatted {
