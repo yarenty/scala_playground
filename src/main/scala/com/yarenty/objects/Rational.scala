@@ -1,5 +1,7 @@
 package com.yarenty.objects
 
+import scala.language.implicitConversions
+
 /**
  * Created by yarenty on 30/04/15.
  */
@@ -48,14 +50,15 @@ class Rational(n: Int, d: Int) {
 
 object Rational {
 
+  implicit def intToRational(x: Int) = new Rational(x)
 
 }
 
 object RationalTest {
 
   def main(args: Array[String]) {
-    val r1 = new Rational(4, 2)
-    val r2 = new Rational(1, 3)
+    val r1 = new Rational(1, 2)
+    val r2 = new Rational(2, 3)
 
     println("r1=" + r1)
     println("r2=" + r2)
@@ -71,6 +74,9 @@ object RationalTest {
 
     println("max=" + (r1 max r2))
 
+    println("r2*2 = " + (r2 * 2))
 
+    println(" 3 * r2 = " + (3 * r2))
+    println("r2 + 2 = " + (r2 + 2))
   }
 }
