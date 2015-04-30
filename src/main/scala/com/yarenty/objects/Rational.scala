@@ -1,0 +1,76 @@
+package com.yarenty.objects
+
+/**
+ * Created by yarenty on 30/04/15.
+ */
+class Rational(n: Int, d: Int) {
+
+
+  //checking preconditions
+  require(d != 0)
+
+  private val g = gcd(n.abs, d.abs) // find greatest common division (1 in normal case)
+
+  val num = n / g
+  val den = d / g
+
+  //auxiliary constructor
+  def this(n: Int) = this(n, 1)
+
+  println("created: " + num + "/" + den)
+
+  //greatest common division
+  private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
+
+
+  override def toString() = num + "/" + den
+
+  def + (that: Rational) = new Rational(num * that.den + that.num * den, den * that.den)
+
+  def - (that: Rational) = new Rational(num * that.den - that.num * den, den * that.den)
+
+  def < (that: Rational) = num * that.den < that.num * den
+
+  def > (that: Rational) = num * that.den > that.num * den
+
+  def <= (that: Rational) = !(>(that))
+
+  def >= (that: Rational) = !(<(that))
+
+  def * (that: Rational) = new Rational(num * that.num, den * that.den)
+
+  def / (that: Rational) = new Rational(num * that.den, den * that.num)
+
+  def max(that: Rational) = if (this < that) that else this
+
+}
+
+
+object Rational {
+
+
+}
+
+object RationalTest {
+
+  def main(args: Array[String]) {
+    val r1 = new Rational(4, 2)
+    val r2 = new Rational(1, 3)
+
+    println("r1=" + r1)
+    println("r2=" + r2)
+    println("sum=" + (r1 + r2))
+
+    println("product=" + (r1 * r2))
+
+    println("divide=" + (r1 / r2))
+
+    println("greater=" + (r1 > r2))
+
+    println("<=" + (r1 <= r2))
+
+    println("max=" + (r1 max r2))
+
+
+  }
+}
