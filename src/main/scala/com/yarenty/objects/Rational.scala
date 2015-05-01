@@ -25,6 +25,17 @@ class Rational(n: Int, d: Int) {
   private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
 
 
+  private def gcdLoop(x: Long, y: Long): Long = {
+    var a = x
+    var b = y
+    while (a != 0) {
+      val temp = a
+      a = b % a
+      b = temp //if a == 0  b has last value
+    }
+  }
+
+
   override def toString() = num + "/" + den
 
   def + (that: Rational) = new Rational(num * that.den + that.num * den, den * that.den)
