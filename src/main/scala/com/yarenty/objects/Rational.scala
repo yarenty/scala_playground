@@ -33,6 +33,7 @@ class Rational(n: Int, d: Int) {
       a = b % a
       b = temp //if a == 0  b has last value
     }
+    b
   }
 
 
