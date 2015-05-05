@@ -38,4 +38,37 @@ object NewControl extends App {
 
   withPrintWriter(new File("date.txt"), writer => writer.println(new Date))
 
+
+  def withPrintWriter2(file: File)(op: PrintWriter => Unit): Unit = {
+    val writer = new PrintWriter(file)
+    try {
+      op(writer)
+    } finally {
+      writer.close()
+    }
+  }
+
+  //hmmm, . .. this looks cooler ;-)
+  withPrintWriter2(new File("date.txt")) {
+    writer => writer.println(new Date + "\nsecond time")
+  }
+
+
+  var assertionEnabled = true
+
+  def myAssert(predicate: () => Boolean) =
+    if (assertionEnabled && !predicate())
+      throw new AssertionError
+
+  println(myAssert(() => 5 > 3))
+
+
+  def byNameAssert(predicate: => Boolean) =
+    if (assertionEnabled && !predicate)
+      throw new AssertionError
+
+
+  println(byNameAssert(5 < 3))
+
+
 }
