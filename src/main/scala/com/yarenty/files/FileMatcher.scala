@@ -31,8 +31,21 @@ object FileMatcher extends App {
   def filesRegex2(query: String) = filesMatching(query, _.matches(_))
 
 
+  //
+  //and even more clean
+
+  def filesMatching3(matcher: String => Boolean) =
+    for (file <- filesHere; if matcher(file.getName)) yield file
+
+  def filesEnding3(query: String) = filesMatching3(_.endsWith(query))
+
+  def filesContaining3(query: String) = filesMatching3(_.contains(query))
+
+  def filesRegex3(query: String) = filesMatching3(_.matches(query))
+
   filesEnding("md").foreach(println)
 
   filesMatching("md", _.endsWith(_)).foreach(println)
+  filesEnding3("md").foreach(println)
 
 }
