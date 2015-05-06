@@ -28,5 +28,36 @@ object PrintElements {
 
     println(l)
     println(ae)
+
+    println(ue beside (ae above l above ue) beside ue)
+
+
+    println(spiral)
+  }
+
+
+  def spiral: Element = {
+    val space = elem(" ")
+    val corner = elem("+")
+
+    def show(nEdges: Int, direction: Int): Element = {
+      if (nEdges == 1)
+        corner
+      else {
+        val sp = show(nEdges - 1, (direction + 3) % 4)
+        def verticalBar = elem('|', 1, sp.height)
+        def horizontalBar = elem('-', sp.width, 1)
+
+        direction match {
+          case 0 => (corner beside horizontalBar) above (sp beside space)
+          case 1 => (sp above space) beside (corner above verticalBar)
+          case 2 => (space beside sp) above (horizontalBar beside corner)
+          case _ => (verticalBar above corner) beside (space above sp)
+        }
+      }
+
+    }
+
+    show(20, 0)
   }
 }

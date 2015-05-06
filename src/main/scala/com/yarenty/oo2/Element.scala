@@ -18,7 +18,11 @@ abstract class Element {
   def width: Int = if (height == 0) 0 else contents(0).length
 
 
-  def above (that: Element): Element = elem(this.contents ++ that.contents)
+  def above (that: Element): Element = {
+    val t1 = this widen that.width
+    val t2 = that widen this.width
+    elem(t1.contents ++ t2.contents)
+  }
 
   /*
    def besideImperative(that: Element): Element = {
@@ -29,14 +33,33 @@ abstract class Element {
    }
    */
 
-  def beside(that: Element): Element =
+  def beside(that: Element): Element = {
+    val t1 = this heighten that.height
+    val t2 = that heighten this.height
     elem(
-      for ((line1, line2) <- this.contents zip that.contents)
+      for ((line1, line2) <- t1.contents zip t2.contents)
         yield line1 + line2
     )
+  }
 
   override def toString = contents mkString "\n"
 
+
+  def widen(w: Int): Element =
+    if (w <= width) this
+    else {
+      val left = elem(' ', (w - width) / 2, height)
+      val right = elem(' ', (w - width - left.width), height)
+      left beside this beside right
+    }
+
+  def heighten(h: Int): Element =
+    if (h <= height) this
+    else {
+      val top = elem(' ', width, (h - height) / 2)
+      val bottom = elem(' ', width, (h - height - top.height))
+      top above this above bottom
+    }
 }
 
 
