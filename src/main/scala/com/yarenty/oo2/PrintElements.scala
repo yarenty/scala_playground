@@ -12,5 +12,12 @@ object PrintElements {
     println("Height::" + ae.height)
     println("Width::" + ae.width)
 
+
+    val e: Element = ae
+
+    val l: ArrayElement = new LineElement("seriously?")
+
+    val ue: Element = new UniformElement('#', 2, 4)
+
   }
 }
