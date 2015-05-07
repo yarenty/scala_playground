@@ -10,9 +10,9 @@ trait Philosophical {
 
 class Animal
 
-trait HasLegs
+trait HasLeg
 
-class Frog extends Animal with Philosophical with HasLegs {
+class Frog extends Animal with Philosophical with HasLeg {
   override def toString = "green"
 
   override def philosophize = println("It ain't easy being " + toString + "!!")
