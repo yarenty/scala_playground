@@ -31,6 +31,35 @@ object Basics {
   }
 
 
+  def msort[T](less: (T, T) => Boolean)(xs: List[T]): List[T] = {
+
+    def merge(xs: List[T], ys: List[T]): List[T] = (xs, ys) match {
+      case (Nil, _) => ys
+      case (_, Nil) => xs
+      case (x :: xs1, y :: ys1) => if (less(x, y)) x :: merge(xs1, ys)
+      else y :: merge(xs, ys1)
+    }
+
+    val n = xs.length / 2
+
+    if (n == 0) xs
+    else {
+      val (ys, zs) = xs splitAt n
+      merge(msort(less)(ys), msort(less)(zs))
+    }
+
+  }
+
+
+  def matrixWithZeroRow (m: List[List[Int]]) = m exists (row => row forall (_ == 0))
+
+  def sumList(xs: List[Int]): Int = (0 /: xs)(_ + _)
+
+  def productList(xs: List[Int]): Int = (1 /: xs)(_ * _)
+
+  def reverseLeft[T](xs: List[T]) = (List[T]() /: xs) { (ys, y) => y :: ys }
+
+
   def main(args: Array[String]) {
     val nums = 1 :: 2 :: 3 :: 4 :: 5 :: 6 :: Nil
 
@@ -67,6 +96,49 @@ object Basics {
     println("zip With index:" + (nums2.zipWithIndex))
 
     println(nums mkString("<", ",", ">"))
+
+
+    println(msort((x: Int, y: Int) => x <= y)(nums ::: nums2))
+
+    val intSort = msort((x: Int, y: Int) => x < y) _
+    val reverseIntSort = msort((x: Int, y: Int) => x > y) _
+
+    println(intSort(nums ::: nums2))
+    println(reverseIntSort(nums ::: nums2))
+
+
+    println(nums map (_ + 66))
+    println(nums map (_.toString.reverse.mkString("{", "|", "}")))
+
+    println(List.range(1, 5) flatMap (i => List.range(1, i) map (j => (i, j))))
+
+    println(for (i <- List.range(1, 5); j <- List.range(1, i)) yield (i, j))
+
+    var sum = 0
+    List.range(1, 5) foreach (sum += _)
+    println("SUM:" + sum)
+
+    println(List.range(1, 10) filter (_ % 2 == 0))
+    println("partition:")
+    println(List.range(1, 10) partition (_ % 2 == 0))
+
+
+    println(List(1, 2, 3, 4, -1, -3, 5, 4, 4, 6, 4, 2, 23, 34, 4, 5, -3, 0) takeWhile (_ > 0))
+    println(List(1, 2, 3, 4, -1, -3, 5, 4, 4, 6, 4, 2, 23, 34, 4, 5, -3, 0) dropWhile (_ > 0))
+    println(List(1, 2, 3, 4, -1, -3, 5, 4, 4, 6, 4, 2, 23, 34, 4, 5, -3, 0) span (_ > 0))
+
+    println(sumList(nums))
+    println(productList(nums))
+
+    val l = List("This", "is", "the", "end", ":-)")
+    println((l.head /: l.tail)(_ + " " + _))
+    println((l :\ "")(_ + " " + _))
+
+
+    println(reverseLeft(nums))
+
+    // and musz simpler sort ;-)
+    println((nums ::: nums2).sortWith(_ < _))
 
 
   }
