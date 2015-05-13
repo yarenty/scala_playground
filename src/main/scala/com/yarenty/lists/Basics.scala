@@ -137,9 +137,15 @@ object Basics {
 
     println(reverseLeft(nums))
 
-    // and musz simpler sort ;-)
+    // and much simpler sort ;-)
     println((nums ::: nums2).sortWith(_ < _))
 
+    println(List.fill(4)("hello world"))
+    println(List.fill(2, 3)('x'))
+
+    println(List.tabulate(5)(n => n * n * n))
+
+    println(List.tabulate(5, 5)(_ * _) mkString ("\n"))
 
   }
 
