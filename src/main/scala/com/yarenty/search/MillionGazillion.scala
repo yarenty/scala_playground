@@ -34,17 +34,53 @@ class CharTree {
     n.child.foldLeft(0)((s, c) => s + size(c))
   }
 
+  private def insertSubNode(n: Node, d: Char): Node = {
+    if (n.child != null) {
+      new Node(d, null) :: n.child
+    } else {
+      n.child = List(new Node(d, null))
+      n
+    }
+
+  }
+
+  def stringToNodeCharSeq(link: String): Node = {
+    var n: Node = null
+    link.toCharArray.reverse.foreach(
+      c => n = new Node(c, Seq(n))
+    )
+    n
+  }
+
+  //
+  //  def merge (n:Seq[Node], n2:Seq[Node]): CharTree= {
+  //    if (n.data == n2.data) merge(n.child,n2.child)
+  //    this
+  //  }
+  //  def merge (n:Node, n2:Node): CharTree= {
+  //    if (n.data == n2.data) merge(n.child,n2.child)
+  //    this
+  //  }
+
+  def exist(link: String): Boolean = {
+
+    var n = root
+    link.toCharArray.foreach(
+      c => {
+        if (n.data == c) {
+          n = n.child(1) //???
+        } else {
+          return false
+        }
+      }
+    )
+    true
+  }
 
 }
 
 object CharTree {
 
-  def insert(link: String): CharTree = {
-    link.toCharArray
-    val ct = new CharTree()
-
-    ct
-  }
 
 }
 
@@ -53,7 +89,7 @@ class MillionGazillion {
   //step 1: remove www. if is there
   //step 2: use tree of chars
   def isThere(link: String): Boolean = {
-
+    true
   }
 
 }
