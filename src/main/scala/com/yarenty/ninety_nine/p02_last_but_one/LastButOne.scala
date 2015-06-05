@@ -7,8 +7,8 @@ package com.yarenty.ninety_nine.p02_last_but_one
 object LastButOne {
 
   def last(lx: List[Int]): Int = lx match {
-    case Nil => 0
-    case l :: Nil => 0
+    case Nil => throw new NoSuchElementException
+    case l :: Nil => throw new NoSuchElementException
     case l :: l2 :: Nil => l
     case l :: l2 :: lx => last(l2 :: lx)
   }

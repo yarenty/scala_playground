@@ -7,7 +7,7 @@ package com.yarenty.ninety_nine.p01_last_element
 object LastElement {
 
   def last(lx: List[Int]): Int = lx match {
-    case Nil => 0
+    case Nil => throw new NoSuchElementException
     case l :: Nil => l
     case l :: lx => last(lx)
   }
