@@ -20,16 +20,25 @@ object EliminateDuplicates {
       case List() => out
       case l :: ls => if (l == out.last) internal(ls, out) else internal(ls, out ::: List(l))
     }
-
     internal(lx, List(lx.head))
 
   }
 
-  def main(args: Array[String]) {
+  // with usage of drop while!!
+  def compressRecursive[A](lx: List[A]): List[A] = lx match {
+    case List() => Nil
+    case l :: ls => l :: compressRecursive(ls.dropWhile(_ == l))
+  }
 
+  def main(args: Array[String]) {
 
     val c = compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
 
     println(c)
+
+    val d = compressRecursive(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+
+    println(d)
+
   }
 }
