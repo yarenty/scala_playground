@@ -24,6 +24,10 @@ object SublistLength {
     case x :: l => (x.head, x.length) :: encode (l)
   }
 
+  def encodeMap[A](l:List[List[A]]): List[(A,Int)] = {
+    l map { e => (e.head, e.length) }
+  }
+
 
   def main(args: Array[String]) {
 
@@ -34,6 +38,7 @@ object SublistLength {
     val e = encode(p)
 
     println(e)
+    println(encodeMap(p))
   }
 
 
