@@ -1,6 +1,15 @@
 package com.yarenty.ninety_nine.p17_split
 
 /**
+ * Intput
+ * List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
+ *
+ *
+ * slice(3, 7, list)
+ *
+ * Output:
+ * List('a, 'b, 'c, 'c)
+ *
  * Created by yarenty on 17/06/15.
  */
 object slice {

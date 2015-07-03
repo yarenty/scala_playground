@@ -1,6 +1,9 @@
 package com.yarenty.ninety_nine.p17_split
 
 /**
+ * Out:
+ * (List('a, 'a, 'a),List('a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+ *
  * Created by yarenty on 17/06/15.
  */
 object splitme {
@@ -22,7 +25,7 @@ object splitme {
 
   // Functional.
   def splitFunctional[A](n: Int, ls: List[A]): (List[A], List[A]) =
-    ( ls.take(n),ls.drop(n))
+    (ls.take(n), ls.drop(n))
 
 
   def main(args: Array[String]) {

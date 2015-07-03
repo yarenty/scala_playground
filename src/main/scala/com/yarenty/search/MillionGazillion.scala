@@ -35,13 +35,13 @@ class CharTree {
   }
 
   private def insertSubNode(n: Node, d: Char): Node = {
-    if (n.child != null) {
-      new Node(d, null) :: n.child
-    } else {
-      n.child = List(new Node(d, null))
-      n
-    }
-
+//    if (n.child != null) {
+//      new Node(d, null) :: n.child
+//    } else {
+//      n.child = List(new Node(d, null))
+//      n
+//    }
+    n
   }
 
   def stringToNodeCharSeq(link: String): Node = {
