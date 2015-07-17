@@ -18,6 +18,9 @@ class S99Int(val start: Int) {
       start % _ != 0
     })
 
+  implicit def isCoPrime(n: Int): Boolean = {
+    gcd(start, n) == 1
+  }
 }
 
 object S99Int {
@@ -26,6 +29,14 @@ object S99Int {
   val primes = Stream.cons(2, Stream(3, 2) filter {
     _.isPrime
   })
+
+  def gcd(x: Int, y: Int): Int = {
+    val o = x % y
+    if (o == 0 || x == y) y
+    else
+      gcd(y, o)
+  }
+
 
 }
 

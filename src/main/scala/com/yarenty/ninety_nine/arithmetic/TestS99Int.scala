@@ -10,5 +10,10 @@ object TestS99Int {
     val s99 = new S99Int(3)
 
     println("S99 = " + s99 + " prime:: " + s99.isPrime)
+
+    S99Int.gcd(21, 7)
+
+    println("is 35 and 64 coprime?:" + new S99Int(35).isCoPrime(64))
+
   }
 }
