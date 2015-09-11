@@ -294,7 +294,7 @@ object MergeArrays {
 
     val merged_array_size: Int = my_array.size + alices_array.size
 
-    var merged_array: Array[Int] = new Array(merged_array_size)
+    val merged_array: Array[Int] = new Array(merged_array_size)
 
     var current_index_alices = 0
     var current_index_mine = 0

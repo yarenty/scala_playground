@@ -11,9 +11,11 @@ object TestS99Int {
 
     println("S99 = " + s99 + " prime:: " + s99.isPrime)
 
-    S99Int.gcd(21, 7)
+    println(S99Int.gcd(21, 7))
 
     println("is 35 and 64 coprime?:" + new S99Int(35).isCoPrime(64))
+
+    
 
   }
 }

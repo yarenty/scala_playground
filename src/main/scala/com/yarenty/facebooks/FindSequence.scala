@@ -26,6 +26,8 @@ object FindSequence {
           if (out.get(i).orNull.foldLeft(0)(_ + _) + x <= v)
             out.put(i, out.get(i).orNull ::: List(x))
         }
+
+        //exit
         if (out.get(i).orNull.foldLeft(0)(_ + _) == v)
           return out.get(i).orNull
       }

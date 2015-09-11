@@ -5,8 +5,8 @@ import org.scalatest.WordSpec
 import org.scalatest.prop.Checkers
 
 // this must contains import : import org.scalacheck.Prop._
-// other wise it cannot find  '==>'
 import org.scalacheck.Prop._
+// other wise it cannot find  '==>'
 
 /**
  * Example OUTPUT:
@@ -16,7 +16,7 @@ org.scalatest.exceptions.GeneratorDrivenPropertyCheckFailedException: Gave up af
 
  * Created by yarenty on 08/05/15.
  */
-class EkementCheckers extends WordSpec with Checkers {
+class ElementCheckers extends WordSpec with Checkers {
   "elem result" must {
     "have passed width" in {
       check((w: Int) => ((w > 0 && w < 100) ==> (elem('x', w, 3).width == w)))

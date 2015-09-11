@@ -152,8 +152,8 @@ object Brackets {
           return false
         else {
           val last_unclosed_opener = openers_stack.pop()
-          //#if this closer doesn 't correspond to the most recently//
-          // #seen unclosed opener, short - circuit, returning false
+          // if this closer doesn't correspond to the most recently
+          // seen unclosed opener, short - circuit, returning false
           if (!(openers_to_closers_map(last_unclosed_opener) == c))
             return false
 
