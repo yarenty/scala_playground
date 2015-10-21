@@ -1,4 +1,4 @@
-package com.yarenty.Drones
+package com.yarenty.drone
 
 /**
  * Your company delivers breakfast via autonomous quadcopter drones. And something mysterious has happened.
