@@ -256,9 +256,9 @@ space? Note: this approach only saves time if we know that our target node is to
  */
 
 
-class Node[A](var value: A) {
+class LNode[A](var value: A) {     // just remember that in same package cannot be same class name!!
 
-  var next: Node[A] = null
+  var next: LNode[A] = null
 
   def isEmpty = {
     value == null && next == null
@@ -275,7 +275,7 @@ class Node[A](var value: A) {
 object KthElementSL {
 
 
-  def kthEnd[A](k: Int, n: Node[A]): A = {
+  def kthEnd[A](k: Int, n: LNode[A]): A = {
 
     if (n == null) throw new IllegalArgumentException("Empty node!")
     var kth = n
@@ -295,11 +295,11 @@ object KthElementSL {
 
   def main(args: Array[String]) {
 
-    val a = new Node('a)
-    val b = new Node('b)
-    val c = new Node('c)
-    val d = new Node('d)
-    val e = new Node('e)
+    val a = new LNode('a)
+    val b = new LNode('b)
+    val c = new LNode('c)
+    val d = new LNode('d)
+    val e = new LNode('e)
 
     a.next = b
     b.next = c
