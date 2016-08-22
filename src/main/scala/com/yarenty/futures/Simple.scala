@@ -55,6 +55,7 @@ class Simple {
 
 }
 
+
 object Simple {
 
   def main(args: Array[String]) {
