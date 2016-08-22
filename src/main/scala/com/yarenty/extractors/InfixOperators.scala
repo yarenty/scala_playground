@@ -17,5 +17,14 @@ object InfixOperators {
 
     println(o)
 
+
+
+    val o2 = xs match {
+      case #::(first, #::(second, _)) => first - second
+      case _ => -1
+    }
+
+    println(o2)
+
   }
 }

@@ -2,6 +2,7 @@ package com.yarenty.extractors
 
 
 import replutils._
+
 /**
   * Created by yarenty on 22/08/2016.
   * (C)2015 SkyCorp Ltd.
@@ -13,11 +14,13 @@ trait User {
 }
 
 class FreeUser(val name: String) extends User
+
 class PremiumUser(val name: String) extends User
 
 object FreeUser {
   def unapply(user: FreeUser): Option[String] = Some(user.name)
 }
+
 object PremiumUser {
   def unapply(user: PremiumUser): Option[String] = Some(user.name)
 }
@@ -25,10 +28,13 @@ object PremiumUser {
 //------------------------ multiple values
 trait User2 {
   def name: String
+
   def score: Int
 }
+
 class FreeUser2(val name: String, val score: Int, val upgradeProbability: Double)
   extends User2
+
 class PremiumUser2(val name: String, val score: Int) extends User2
 
 
@@ -36,10 +42,10 @@ object FreeUser2 {
   def unapply(user: FreeUser2): Option[(String, Int, Double)] =
     Some((user.name, user.score, user.upgradeProbability))
 }
+
 object PremiumUser2 {
   def unapply(user: PremiumUser2): Option[(String, Int)] = Some((user.name, user.score))
 }
-
 
 
 //----------------- boolean extractor
@@ -49,12 +55,11 @@ object premiumCandidate {
 }
 
 
-
 object Test {
 
   def main(args: Array[String]) {
 
-    val user1 = FreeUser.unapply(new  FreeUser("Zbygnief"))
+    val user1 = FreeUser.unapply(new FreeUser("Zbygnief"))
     println(user1)
 
     replutils.printAttrValues(user1)
@@ -85,12 +90,11 @@ object Test {
 
     val user3: User2 = new FreeUser2("Daniel", 2500, 0.8d)
     val out3 = user3 match {
-      case freeUser2 @ premiumCandidate() => "initiateSpamProgram(freeUser)"
+      case freeUser2@premiumCandidate() => "initiateSpamProgram(freeUser)"
       case _ => "sendRegularNewsletter(user)"
     }
 
     println(out3)
-
 
 
   }
