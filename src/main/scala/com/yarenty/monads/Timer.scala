@@ -37,15 +37,17 @@ object Timer {
     ticks.subscribe(n => println("n = " + n))
     evens.subscribe(x => println("even = " + x))
     val bugs: Observable[Seq[Long]] = ticks.slidingBuffer(2, 1)
-
+    val bugs2: Observable[Seq[Long]] = ticks.slidingBuffer(2, 2)
 
     val s = bugs.subscribe(b => println(b))
+    val s2 = bugs2.subscribe(b => println(b))
 
     println("wait 10 sec:")
     Await.ready(f2, 60 seconds)
     println("exit")
 
     s.unsubscribe()
+    s2.unsubscribe()
   }
 
 }
