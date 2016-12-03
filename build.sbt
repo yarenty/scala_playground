@@ -24,6 +24,8 @@ javaOptions in(Test, run) += "-XstartOnFirstThread"
 //all for test
 libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.4" % "test"
 
+libraryDependencies += "io.reactivex" % "rxscala_2.11" % "0.26.4"  //reactive RXScala - futures, observable etc
+
 libraryDependencies += "junit" % "junit" % "4.12" % "test"
 
 libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.2" % "test"
