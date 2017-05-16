@@ -6,7 +6,7 @@ import math.abs
 /**
   * Created by yarenty on 16/05/2017.
   */
-object HigerOrder extends App {
+object HigherOrder extends App {
 
   val tolerance = 0.0001
 
