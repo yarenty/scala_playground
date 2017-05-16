@@ -81,7 +81,7 @@ libraryDependencies += "log4j" % "log4j" % "1.2.17"
 
 //RESOLVERS
 
-//resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
+resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 
 resolvers += "Local Maven Repository" at "" + Path.userHome.asFile.toURI.toURL + ".m2/repository"
 
