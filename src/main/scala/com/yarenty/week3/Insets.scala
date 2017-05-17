@@ -1,4 +1,4 @@
-package com.yarenty.classes
+package com.yarenty.week3
 
 /**
   * Created by yarenty on 17/05/2017.

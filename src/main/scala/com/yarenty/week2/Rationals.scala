@@ -1,4 +1,4 @@
-package com.yarenty.functions
+package com.yarenty.week2
 
 /**
   * Created by yarenty on 16/05/2017.
