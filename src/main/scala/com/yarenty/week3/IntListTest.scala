@@ -7,6 +7,15 @@ import java.util.NoSuchElementException
   */
 object IntListTest extends App {
 
+
+  //create singletons 
+  def singleton[T](elem: T) = new Cons[T](elem, new Nil[T])
+
+
+  val s1 = singleton(1)
+  val st = singleton(true)
+
+
 }
 
 
