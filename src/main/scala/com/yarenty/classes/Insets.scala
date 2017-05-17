@@ -11,6 +11,10 @@ object Insets extends App {
   val t2 = t1 incl 4
   println(t2)
 
+  val t3 = new NonEmpty(7,Empty,Empty)
+  
+  println( t2 union t3 )
+  println( t3 union t2 )
 
 }
 
