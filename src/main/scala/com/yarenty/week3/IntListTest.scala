@@ -12,9 +12,20 @@ object IntListTest extends App {
   def singleton[T](elem: T) = new Cons[T](elem, new Nil[T])
 
 
+  def nth[T](n: Int, l: List[T]): T = {
+    if (l.isEmpty) throw new IndexOutOfBoundsException("no more ")
+    else if (n == 0) l.head
+    else nth(n - 1, l.tail)
+
+  }
+
   val s1 = singleton(1)
   val st = singleton(true)
+  val l = new Cons(1, new Cons(2, new Cons(3, singleton(4))))
 
+  println(nth(2, l))
+  println(nth(3, l))
+  println(nth(5, l))
 
 }
 
