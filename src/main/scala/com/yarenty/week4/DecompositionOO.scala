@@ -10,14 +10,18 @@ package com.yarenty.week4
   *
   * Created by yarenty on 24/05/2017.
   */
-trait Expr {
-  def eval: Int
-}
+class DecompositionOO {
 
-class Number(n: Int) extends Expr {
-  override def eval: Int = n
-}
+  trait Expr {
+    def eval: Int
+  }
 
-class Sum(e1: Expr, e2: Expr) extends Expr {
-  override def eval: Int = e1.eval + e2.eval
+  class Number(n: Int) extends Expr {
+    override def eval: Int = n
+  }
+
+  class SumOO(e1: Expr, e2: Expr) extends Expr {
+    override def eval: Int = e1.eval + e2.eval
+  }
+
 }
