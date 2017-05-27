@@ -10,6 +10,10 @@ package object arrays {
       for (i <- self.indices) self(i) = self(i) - that(i)
       self
     }
+
+
+    def +(that: Array[Int]): Array[Int] = (self zip that) map { case (x, y) => x + y }
+
   }
-  
+
 }

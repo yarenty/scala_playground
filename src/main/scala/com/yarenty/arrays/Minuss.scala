@@ -26,5 +26,13 @@ object Minuss extends App {
   val res = t1 - t2 - t3
 
   println(res.mkString(","))
+  
+  val minus = (t1 zip t2).map{ case (x,y) => x - y}
+ println((t1-t2).mkString(","))
+ println(minus.mkString(","))
 
+
+  println((t1+t2).mkString(","))
+  
+  println((Array(1,1)+t1+t2+Array(1,2,3)).mkString(","))
 }
