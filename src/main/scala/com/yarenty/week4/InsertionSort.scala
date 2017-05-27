@@ -21,6 +21,6 @@ object InsertionSort extends App{
   
   val s = isort(l)
   
-  
+  l.last
   println( s.mkString(","))
 }
