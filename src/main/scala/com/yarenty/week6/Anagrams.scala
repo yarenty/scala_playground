@@ -33,7 +33,7 @@ object Anagrams extends App {
 
 
   class Poly(val terms: Map[Int, Double]) {
-    def +(other: Poly) = new Poly(terms ++ (other.terms map adjust)
+    
       
     def adjust (term:(Int,Double)):(Int,Double) = {
       val (exp,coeff) = term
@@ -42,7 +42,8 @@ object Anagrams extends App {
         case None => exp -> coeff
       }
     }
-
+    
+    def +(other: Poly) = new Poly(terms ++ (other.terms map adjust))
       
       
     override def toString: String = 
