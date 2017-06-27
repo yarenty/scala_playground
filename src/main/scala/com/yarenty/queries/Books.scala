@@ -17,27 +17,27 @@ object Books extends App {
     Book(title = "Java Puzzlers",
       authors = List("Bloch, Joshua", "Gafter, Neal")),
     Book(title = "Programming in Scala",
-      authors = List("Odersky, Martin", "Spoon, Lex", "Venners, Bill")), 
-      Book( title = "Effective Java 2 ",
-        authors = List("Bloch, Joshua"))
+      authors = List("Odersky, Martin", "Spoon, Lex", "Venners, Bill")),
+    Book(title = "Effective Java 2 ",
+      authors = List("Bloch, Joshua"))
 
   )
 
 
   val bTitles = for (b <- books; a <- b.authors if a startsWith "Bird") yield b.title
   println(bTitles mkString ";")
-  
-  val jav = for (b<- books if (b.title indexOf "Java") >= 0) yield b.title
+
+  val jav = for (b <- books if (b.title indexOf "Java") >= 0) yield b.title
   println(jav mkString ";")
 
-// multiple books
+  // multiple books
   val dob = for {
     b1 <- books
     b2 <- books
     if b1 != b2
     a1 <- b1.authors
     a2 <- b2.authors
-    if a1==a2
+    if a1 == a2
   } yield a1
   println(dob mkString ";")
 
@@ -49,7 +49,7 @@ object Books extends App {
     if b1.title < b2.title
     a1 <- b1.authors
     a2 <- b2.authors
-    if a1==a2
+    if a1 == a2
   } yield a1
   println(dob2 mkString ";")
 
@@ -68,9 +68,6 @@ object Books extends App {
   println(dob3 mkString ";")
 
 
-  
-  
-  
   val books2: Set[Book] = Set(
     Book(title = "Structure and Interpretation of Computer Programs",
       authors = List("Abelson, Harald", "Sussman, Gerald J.")),
@@ -82,7 +79,7 @@ object Books extends App {
       authors = List("Bloch, Joshua", "Gafter, Neal")),
     Book(title = "Programming in Scala",
       authors = List("Odersky, Martin", "Spoon, Lex", "Venners, Bill")),
-    Book( title = "Effective Java 2 ",
+    Book(title = "Effective Java 2 ",
       authors = List("Bloch, Joshua"))
 
   )
@@ -95,10 +92,21 @@ object Books extends App {
     if b1 != b2
     a1 <- b1.authors
     a2 <- b2.authors
-    if a1==a2
+    if a1 == a2
   } yield a1
   println(dob4 mkString ";")
 
-  
+
+  //  val bTitles = for (b <- books; a <- b.authors if a startsWith "Bird") yield b.title
+  //  println(bTitles mkString ";")
+
+
+  val bTitles2 =
+    books.flatMap(b =>
+      b.authors.withFilter(a => a startsWith "Bird")
+        .map(a => b.title)
+    )
+  println(bTitles mkString ";")
+  println(bTitles2 mkString ";")
 
 }
