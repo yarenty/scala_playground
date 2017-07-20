@@ -28,6 +28,16 @@ object Primes {
   
 
   
+  def sqrtStream(x:Double):Stream[Double] = {
+    def improve(guess:Double) = (guess + x/guess) /2
+    lazy val guesses: Stream[Double] = 1 #:: (guesses map improve)
+    guesses
+  }
+  
+  
+  def isGoodEnough(guess:Double, x:Double) = 
+    math.abs((guess*guess -x)/x) <0.0001
+  
   
   
   def main(args: Array[String]): Unit = {
@@ -62,6 +72,25 @@ object Primes {
     val allPrimes = sieve(from(2))
     
     println(allPrimes.take(10).toList)
+    
+    
+    println(sqrtStream(4).take(10).toList)
+    println((sqrtStream(4) filter (isGoodEnough(_, 4))).take(10).toList)
+
+
+    t = System.currentTimeMillis
+    val xs = from(1) map (_ * 1000)
+    tt = System.currentTimeMillis
+    println(xs)
+    println(tt - t)
+
+    t = System.currentTimeMillis
+    val ys = from(1) filter (_ % 1000 == 0)
+    tt = System.currentTimeMillis
+    println(ys)
+    println(tt - t)
+    
+    
     
     
   }
