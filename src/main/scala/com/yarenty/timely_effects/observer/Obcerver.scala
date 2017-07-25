@@ -1,4 +1,4 @@
-package com.yarenty.timely_effects
+package com.yarenty.timely_effects.observer
 
 /**
   * Created by yarenty on 21/07/2017.
@@ -70,5 +70,13 @@ object Obcerver extends App {
   
   println(c.totalBalance)
   
+  a deposit 20
   
+  println(c.totalBalance)
+
+  b deposit 30
+
+  println(c.totalBalance)
+
+
 }
